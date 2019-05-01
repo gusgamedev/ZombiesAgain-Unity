@@ -6,8 +6,7 @@ public class Weapon : MonoBehaviour {
 
     public GameObject projectile;
     public GameObject muzzle;
-    public Transform shotPoint;
-
+    
     public float timeBetweenShots;
 
     private float shotTime;
@@ -31,10 +30,10 @@ public class Weapon : MonoBehaviour {
         {
             if (Time.time >= shotTime)
             {
-                GameObject bullet = Instantiate(muzzle, shotPoint.position, transform.rotation) as GameObject;
+                GameObject bullet = Instantiate(muzzle, transform.position, transform.rotation) as GameObject;
                 bullet.transform.parent = this.transform;
 
-                Instantiate(projectile, shotPoint.position, transform.rotation);
+                Instantiate(projectile, transform.position, transform.rotation);
 
                 //cameraAnim.SetTrigger("shake");
                 shotTime = Time.time + timeBetweenShots;

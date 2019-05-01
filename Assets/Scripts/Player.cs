@@ -21,6 +21,12 @@ public class Player : MonoBehaviour
     private Transform trans;
 
     private Vector2 moveAmount;
+
+    public int health;
+    public Slider healthBar;
+    private float damageTime;
+    private float timeBetweenHits = 0.3f;
+
     
     
    
@@ -42,6 +48,8 @@ public class Player : MonoBehaviour
         //Set animation
         SetAnimationPlayer(moveInput);
 
+        healthBar.value = health;
+
     }
 
     private void FixedUpdate()
@@ -58,11 +66,26 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(-1, transform.localScale.y);
         else
             transform.localScale = new Vector2(1, transform.localScale.y);
-        
+
+        healthBar.transform.localScale = new Vector2(transform.localScale.x, healthBar.transform.localScale.y);
+
+
         anim.SetBool("front", facingFront);
         anim.SetBool("idle", moveInput == Vector2.zero);
 
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (damageTime <= Time.time)
+        {
+            if (health > 0)
+                health -= damage;
+
+            damageTime = Time.time + timeBetweenHits;
+        }
+
     }
 
    

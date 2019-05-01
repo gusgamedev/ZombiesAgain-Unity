@@ -67,5 +67,24 @@ public class Enemy : MonoBehaviour {
             Destroy(this.gameObject);
         }
     }
-	
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().TakeDamage(damage);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().TakeDamage(damage);
+        }
+    }
+
+    
 }
