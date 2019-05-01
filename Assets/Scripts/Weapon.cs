@@ -10,13 +10,8 @@ public class Weapon : MonoBehaviour {
     public float timeBetweenShots;
 
     private float shotTime;
-
-   // Animator cameraAnim;
-
-    private void Start()
-    {
-       // cameraAnim = Camera.main.GetComponent<Animator>();
-    }
+    public CameraShake shake;
+  
 
     private void Update()
     {
@@ -35,7 +30,7 @@ public class Weapon : MonoBehaviour {
 
                 Instantiate(projectile, transform.position, transform.rotation);
 
-                //cameraAnim.SetTrigger("shake");
+                shake.ShakeCamera(0.3f);
                 shotTime = Time.time + timeBetweenShots;
             }
 

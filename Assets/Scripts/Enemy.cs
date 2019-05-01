@@ -13,26 +13,28 @@ public class Enemy : MonoBehaviour {
     public float timeBetweenAttacks;
     public int damage;
 
-    public int pickupChance;
+  /*  public int pickupChance;
     public GameObject[] pickups;
-
     public int healthPickupChance;
     public GameObject healthPickup;
-
+    */
     public GameObject explosion;
     public GameObject blood;
 
     private Animator anim;
+    private Rigidbody2D rb;
 
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
 
+        rb.velocity = Vector2.zero;
 
         if (player != null)
         {         
@@ -68,23 +70,23 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.tag);
-
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<Player>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+        }
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            collision.GetComponent<Player>().TakeDamage(damage);
-        }
-    }
-
+   
     
 }

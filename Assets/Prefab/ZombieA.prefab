@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7038946604563118133}
   - component: {fileID: 7038946604563118132}
   - component: {fileID: -3601079324069604592}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ZombieA
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.082805395, y: -0.08575976}
+  m_Offset: {x: -0.082805395, y: -0.049981713}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,10 +167,6 @@ MonoBehaviour:
   speed: 7
   timeBetweenAttacks: 0
   damage: 1
-  pickupChance: 0
-  pickups: []
-  healthPickupChance: 0
-  healthPickup: {fileID: 0}
   explosion: {fileID: 4086170130876279581, guid: 7aa2005c485348e42b9cc720ef27f2d5,
     type: 3}
   blood: {fileID: 2936085822980152619, guid: 1396b877a621c3c42bfe1ffa02291e40, type: 3}
