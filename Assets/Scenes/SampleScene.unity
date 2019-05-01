@@ -226,7 +226,6 @@ MonoBehaviour:
   projectile: {fileID: 6146005191914492151, guid: 77dac2b7e02752e4196e66d3915c2e7d,
     type: 3}
   muzzle: {fileID: 5636685441951174097, guid: 3de0b205368b7764b80b9c837776f04a, type: 3}
-  shotPoint: {fileID: 228773074}
   timeBetweenShots: 0.1
 --- !u!1 &404818439
 GameObject:
@@ -1232,8 +1231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.188}
-  m_SizeDelta: {x: 1600.0002, y: 899.88556}
+  m_AnchoredPosition: {x: 0, y: 0.6}
+  m_SizeDelta: {x: 1600.0002, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1935561903
 MonoBehaviour:
@@ -1330,7 +1329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.2, y: 40.69}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 64, y: 19.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951714632
