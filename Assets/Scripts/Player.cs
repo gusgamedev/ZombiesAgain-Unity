@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private float damageTime;
     private float timeBetweenHits = 0.3f;
 
-    
+    public SceneTransition transition;
     
    
 
@@ -82,6 +82,11 @@ public class Player : MonoBehaviour
         {
             if (health > 0)
                 health -= damage;
+            else
+            {
+                transition.LoadScene("GameOver");
+                Destroy(gameObject);
+            }
 
             damageTime = Time.time + timeBetweenHits;
         }

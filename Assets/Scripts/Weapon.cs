@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour {
 
                 shake.ShakeCamera(0.3f);
                 shotTime = Time.time + timeBetweenShots;
+                GetComponent<AudioSource>().Play();
             }
 
         }
