@@ -31,14 +31,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>().TakeDamage(damage);
-
+            DestroyProjectile();
         }
-
-        DestroyProjectile();
-
-
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Slider
+  - Tree
+  - Donuts
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Aim
   - Limit
   - Bullet
-  - 
-  - 
+  - Tree
+  - Donut
   - 
   - 
   - 
@@ -40,11 +42,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1975772133
+    locked: 0
   - name: Blood
     uniqueID: 2791386283
     locked: 0
+  - name: MainObjects
+    uniqueID: 2382571383
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Buttom
+    uniqueID: 3176906241
+    locked: 0
+  - name: Aim
+    uniqueID: 2481251279
     locked: 0
   - name: Transition
     uniqueID: 3752334143

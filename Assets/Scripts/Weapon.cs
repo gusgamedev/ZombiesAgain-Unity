@@ -10,16 +10,12 @@ public class Weapon : MonoBehaviour {
     public float timeBetweenShots;
 
     private float shotTime;
-    public CameraShake shake;
+    
   
 
     private void Update()
     {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = rotation;
-
+        LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
         if (Input.GetMouseButton(0))
         {
@@ -28,16 +24,24 @@ public class Weapon : MonoBehaviour {
                 GameObject bullet = Instantiate(muzzle, transform.position, transform.rotation) as GameObject;
                 bullet.transform.parent = this.transform;
 
-                Instantiate(projectile, transform.position, transform.rotation);
+                //Instantiate(projectile, transform.position, transform.rotation);
+                Instantiate(projectile, new Vector2(transform.position.x, transform.position.y), transform.rotation);
 
-                shake.ShakeCamera(0.3f);
+
+                GameManager.instance.shake.ShakeCamera(0.3f, 0.1f);
                 shotTime = Time.time + timeBetweenShots;
                 GetComponent<AudioSource>().Play();
             }
 
         }
+    }
 
-
+    void LookAt(Vector3 targetPosition)
+    {
+        Vector2 direction = targetPosition - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = rotation;
     }
 
 }

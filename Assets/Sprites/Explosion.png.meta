@@ -118,10 +118,10 @@ TextureImporter:
       name: Explosion_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 67
-        width: 22
-        height: 22
+        x: 0
+        y: 55
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,7 +129,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6d24cfa7cda2444d81adf610d9ba22a
+      spriteID: 04a43de0d8bf16e4fb60380dc8d89545
       internalID: 5986030973748356752
       vertices: []
       indices: 
@@ -139,10 +139,10 @@ TextureImporter:
       name: Explosion_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 15
-        width: 26
-        height: 26
+        x: 0
+        y: 7
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a403dd251911db4b84ce326c4fb7c37
+      spriteID: 728eee493e9cd0c4dbc089a0d2118b5e
       internalID: -5600206312213581617
       vertices: []
       indices: 
@@ -160,10 +160,10 @@ TextureImporter:
       name: Explosion_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 11
-        width: 35
-        height: 35
+        x: 48
+        y: 7
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,7 +171,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69a60c65556627d4b88e3a396b4dc816
+      spriteID: 32e56151df7b542419846e623e5f94f5
       internalID: 3815954189206336483
       vertices: []
       indices: 

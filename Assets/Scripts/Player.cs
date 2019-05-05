@@ -80,11 +80,15 @@ public class Player : MonoBehaviour
     {
         if (damageTime <= Time.time)
         {
+            GameManager.instance.shake.ShakeCamera(0.3f, 0.6f);
+            GetComponent<AudioSource>().Play();
+
+
             if (health > 0)
                 health -= damage;
             else
             {
-                transition.LoadScene("GameOver");
+                //transition.LoadScene("GameOver");
                 Destroy(gameObject);
             }
 

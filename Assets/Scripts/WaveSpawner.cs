@@ -7,7 +7,7 @@ public class WaveSpawner : MonoBehaviour {
     [System.Serializable]
     public class Wave {
         public Enemy[] enemies;
-        public int count;
+        public int enemiesInThisWave;
         public float timeBetweenSpawns;
     }
 
@@ -21,41 +21,35 @@ public class WaveSpawner : MonoBehaviour {
 
     private bool spawningFinished;
 
-    public GameObject boss;
+    /*public GameObject boss;
     public Transform bossSpawnPoint;
-
-    public GameObject healthBar;
-
+    public GameObject healthBar;*/
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        StartCoroutine(CallNextWave(currentWaveIndex));
+        player = GameObject.FindWithTag("Player").transform;  
     }
 
     private void Update()
-    {
-      
-            if (spawningFinished == true && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+    {      
+        if (spawningFinished == true && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        {
+            spawningFinished = false;
+            if (currentWaveIndex + 1 < waves.Length)
             {
-                spawningFinished = false;
-                if (currentWaveIndex + 1 < waves.Length)
-                {
-                    currentWaveIndex++;
-                   StartCoroutine(CallNextWave(currentWaveIndex));
-                }
-                else
-                {
-            //    Instantiate(boss, bossSpawnPoint.position, bossSpawnPoint.rotation);
-             //   healthBar.SetActive(true);
-                }
-
+                currentWaveIndex++;
+                StartCoroutine(CallNextWave(currentWaveIndex));
             }
-
-
+            else
+            {
+                //    Instantiate(boss, bossSpawnPoint.position, bossSpawnPoint.rotation);
+                //   healthBar.SetActive(true);
+            }
+        }  
     }
 
-    IEnumerator CallNextWave(int waveIndex) {
+    IEnumerator CallNextWave(int waveIndex)
+    {
         yield return new WaitForSeconds(timeBetweenWaves);
         StartCoroutine(SpawnWave(waveIndex));
     }
@@ -63,7 +57,7 @@ public class WaveSpawner : MonoBehaviour {
     IEnumerator SpawnWave (int waveIndex) {
         currentWave = waves[waveIndex];
 
-        for (int i = 0; i < currentWave.count; i++)
+        for (int i = 0; i < currentWave.enemiesInThisWave; i++)
         {
 
             if (player == null)
@@ -74,7 +68,7 @@ public class WaveSpawner : MonoBehaviour {
             Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(randomEnemy, randomSpawnPoint.position, transform.rotation);
 
-            if (i == currentWave.count - 1)
+            if (i == currentWave.enemiesInThisWave - 1)
             {
                 spawningFinished = true;
             }
@@ -84,10 +78,11 @@ public class WaveSpawner : MonoBehaviour {
             }
 
             yield return new WaitForSeconds(currentWave.timeBetweenSpawns);
-
         }
-
-
     }
 
+    public void StartWave()
+    {
+        StartCoroutine(CallNextWave(currentWaveIndex));
+    }
 }
