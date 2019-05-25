@@ -8,7 +8,7 @@ public class DonutSpawner : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject donut;
 
-    private int lastSpawnPosition;
+    private int lastSpawnPosition = 0;
 
     private void Start()
     {
@@ -19,6 +19,7 @@ public class DonutSpawner : MonoBehaviour
     public void SpawnDonut()
     {
         int index = GetRandomPosition(lastSpawnPosition);
+        lastSpawnPosition = index;
         Transform randomSpawnPoint = spawnPoints[index];
 
         //Atentar para que a posção

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float speed = 8f;
 
    // public float mousepos;
   //  public float playerpos;
