@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class SceneTransition : MonoBehaviour {
 
@@ -10,6 +10,7 @@ public class SceneTransition : MonoBehaviour {
     private void Start()
     {
         transitionAnim = GetComponent<Animator>();
+       // SoundManager.instance.PlayMusic(SoundManager.instance.menuMusic);
     }
 
     public void LoadScene(string sceneName) {
@@ -19,7 +20,10 @@ public class SceneTransition : MonoBehaviour {
     IEnumerator Transition(string sceneName) {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(sceneName);
+
+        GameManager.instance.ChangeScene(sceneName);
+        
+
     }
 
 }

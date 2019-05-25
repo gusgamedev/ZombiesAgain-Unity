@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    public float mousepos;
-    public float playerpos;
+   // public float mousepos;
+  //  public float playerpos;
 
 
     public bool facingRight = true;
@@ -18,8 +18,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-    private Transform trans;
-
+   
     private Vector2 moveAmount;
 
     public int health;
@@ -27,17 +26,19 @@ public class Player : MonoBehaviour
     private float damageTime;
     private float timeBetweenHits = 0.3f;
 
-    public SceneTransition transition;
-    
-   
+    private AudioSource audioSource;
+    public AudioClip hurtFx;
+    public AudioClip donutFx;
 
-
+    private CameraShake shake;
 
     private void Start()
     {        
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-       // trans = GetComponent<Transform>();
+        audioSource = GetComponent<AudioSource>();
+
+        shake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
     }
 
     private void Update()
@@ -73,28 +74,35 @@ public class Player : MonoBehaviour
         anim.SetBool("front", facingFront);
         anim.SetBool("idle", moveInput == Vector2.zero);
 
-        
     }
 
     public void TakeDamage(int damage)
     {
         if (damageTime <= Time.time)
         {
-            GameManager.instance.shake.ShakeCamera(0.3f, 0.6f);
-            GetComponent<AudioSource>().Play();
+            shake.ShakeCamera(0.3f, 0.6f);
 
-
+            PlayFx(hurtFx);
+                       
             if (health > 0)
                 health -= damage;
             else
             {
-                //transition.LoadScene("GameOver");
+                GameManager.instance.ChangeScene("GameOver");
+
                 Destroy(gameObject);
+                
             }
 
             damageTime = Time.time + timeBetweenHits;
         }
 
+    }
+
+    public void PlayFx(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
    

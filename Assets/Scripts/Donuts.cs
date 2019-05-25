@@ -18,12 +18,11 @@ public class Donuts : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.tag);
-
+    {   
         if (collision.CompareTag("Player"))
         {
-            GameManager.instance.donutSpawner.SpawnDonut();
+            SpawnManager.instance.donutSpawner.SpawnDonut();
+            collision.GetComponent<Player>().PlayFx(collision.GetComponent<Player>().donutFx);
 
             Destroy(gameObject);
         }

@@ -1,30 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public CameraShake shake;
-    public WaveSpawner waveSpawner;
-    public DonutSpawner donutSpawner;
-    
+   // public CameraShake shake;
+
+
     void Awake()
     {
         if (instance == null)
             instance = this;
         else if (instance != this)
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);      
 
         DontDestroyOnLoad(gameObject);
     }
-
-  
-    // Update is called once per frame
-    public void StartGame()
+    
+    public void ChangeScene(string nameScene)
     {
-        waveSpawner.StartWave();
+        if (nameScene == "MainMenu")
+            SoundManager.instance.PlayMusic(SoundManager.instance.menuMusic);
+        else if (nameScene == "Game")
+            SoundManager.instance.PlayMusic(SoundManager.instance.gameMusic);
+        else if (nameScene == "GameOver")
+            SoundManager.instance.PlayMusic(SoundManager.instance.gameOverFx, false);
+
+        SceneManager.LoadScene(nameScene); 
+
     }
 
     

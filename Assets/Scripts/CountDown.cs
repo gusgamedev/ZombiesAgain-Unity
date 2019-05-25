@@ -20,7 +20,7 @@ public class CountDown : MonoBehaviour
     // Update is called once per frame
     public void finishCountdown()
     {
-        GameManager.instance.StartGame();
+        SpawnManager.instance.StartGame();
     }
 
     public void PlaySound(int numberValue)
