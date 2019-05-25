@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour {
 
     public Transform target;
     public Transform aim;
-    
+        
 	public float speed;
     public float minX;
     public float maxX;
@@ -16,17 +16,19 @@ public class CameraFollow : MonoBehaviour {
     public float maxCamDistance;
 
     float clampedX;
-    float clampedY;
+    float clampedY;  
+    Camera cam;
+
 
 
     private void Start()
     {
         transform.position = target.position;
+        cam = GetComponentInChildren<Camera>();        
     }
 
     private void LateUpdate()
     {
-
         if (target != null)
         {
             float dist = Vector3.Distance(aim.position, target.position);
@@ -35,10 +37,10 @@ public class CameraFollow : MonoBehaviour {
             {
                 Vector2 cam = aim.position;
                 clampedX = Mathf.Clamp((target.position.x + cam.x) / 2, minX, maxX);
-                clampedY = Mathf.Clamp((target.position.y + cam.y) / 2, minY, maxY);
+                clampedY = Mathf.Clamp((target.position.y + cam.y) / 2, minY, maxY);                
             }
             
             transform.position = Vector2.Lerp(transform.position, new Vector2(clampedX, clampedY), speed * Time.deltaTime);
         }
-    }
+    }   
 }
